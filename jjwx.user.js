@@ -1,12 +1,15 @@
 // ==UserScript==
-// @name         晋江文学城阅读页面美化
-// @namespace    http://tampermonkey.net/
-// @version      12.0
-// @description  现代简洁阅读体验，统一布局与样式，支持多主题配色和字体调整
+// @name         晋江文学城极简阅读页面
+// @namespace    https://github.com/cresstoo/jjwx-reader
+// @version      1.0.1
+// @description  极简阅读体验，统一布局与样式，支持多主题配色和字体调整
 // @author       cress
 // @match        https://www.jjwxc.net/onebook.php?novelid=*&chapterid=*
-// @icon         https://s2.loli.net/2025/03/17/F1Hn6gWdU4l3ezS.png
+// @icon         data:image/vnd.microsoft.icon;base64,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AP8AqgD/AKoA/wCqAP8AqgD/AKoA/ye3J//9/v3//f79/wWsBf8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/r+Sv///////R79H/s+Wz/7Pls/+z5bP/s+Wz/7Pls/+z5bP/s+Wz/7Pls/+z5bP/s+Wz/7Pls/+z5bP/v+m/////////////BawF/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP+v5K////////////////////////////////////////////////////////////////////////////////////////////8FrAX/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/6/kr///////ctBy/xWxFf8VsRX/FbEV/xWxFf8VsRX/FbEV/xWxFf8VsRX/FbEV/xWxFf8VsRX/FbEV/zq9Ov///////////wWsBf8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/r+Sv//////9ly2X/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/J7cn////////////BawF/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP+v5K///////3HPcf8TsBP/E7AT/xOwE/8TsBP/E7AT/xOwE/8TsBP/E7AT/xOwE/8TsBP/E7AT/xOwE/84vDj///////////8FrAX/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/6/kr////////////////////////////////////////////////////////////////////////////////////////////wWsBf8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/r+Sv//////+457j/ideJ/4nXif+J14n/ideJ/4nXif+J14n/ideJ/4nXif+J14n/ideJ/4nXif+J14n/m96b////////////BawF/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP+v5K///////2XLZf8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8ntyf///////////8FrAX/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/6/kr///////Zctl/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/ye3J////////////wWsBf8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/r+Sv///////e9N7/ye3J/8ntyf/J7cn/ye3J/8ntyf/J7cn/ye3J/8ntyf/J7cn/ye3J/8ntyf/J7cn/0fDR////////////BawF/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP+v5K////////////////////////////////////////////////////////////////////////////////////////////8FrAX/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8DqwP/GbIZ/xmyGf8Zshn/GbIZ/xmyGf8Zshn/GbIZ/xmyGf8Zshn/GbIZ/xmyGf8Zshn/GbIZ/xmyGf8Zshn/GbIZ/xmyGf8Zshn/GbIZ/xmyGf8Zshn/GbIZ/xmyGf8Zshn/BKsE/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/yC0IP////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8ntyf/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/GbIZ/8ntyf/J7cn/ye3J/8ntyf/J7cn/ye3J/8ntyf/J7cn/+v36///////Q79D/ye3J/8ntyf/W8db///////T79P/J7cn/ye3J/8ntyf/J7cn/ye3J/8ntyf/J7cn/ye3J/x+0H/8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/2XLZf9ayFr/C64L/wCqAP/n9+f//////yG1If8AqgD/AKoA/z2+Pf//////y+3L/wCqAP8uuS7/l9yX/zW7Nf8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8GrAb/6vjq//7//v8ktiT/AKoA/+f35///////IbUh/wCqAP8AqgD/Pb49///////L7cv/AKoA/y65Lv/8/vz/0e/R/wSrBP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/1nIWf//////vOm8/wCqAP8AqgD/5/fn//////8htSH/AKoA/wCqAP89vj3//////8vty/8AqgD/AKoA/5zenP//////bM5s/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8BqgH/zu7O//////9FwUX/AKoA/wCqAP/n9+f//////yG1If8AqgD/AKoA/z2+Pf//////y+3L/wCqAP8AqgD/H7Qf//n9+f/r+Ov/EK8Q/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/1bHVv//////vum+/wCqAP8AqgD/AKoA/+f35///////IbUh/wCqAP8AqgD/Pb49///////L7cv/AKoA/wCqAP8AqgD/n9+f//////+A1ID/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/GbIZ/2fMZ/8ruCv/AKoA/wCqAP8AqgD/5/fn//////8htSH/AKoA/wCqAP89vj3//////8vty/8AqgD/AKoA/wCqAP8ltiX/UcVR/witCP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/4nXif/F68X/xevF/8Xrxf/F68X/xevF/8Xrxf/5/fn//////83uzf/F68X/xevF/9Pw0///////8/vz/8Xrxf/F68X/xevF/8Xrxf/F68X/xevF/7rouv8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/seWx////////////////////////////////////////////////////////////////////////////////////////////////////////////8frx/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8QrxD/F7EX/xexF/8XsRf/F7EX/xexF/8XsRf/F7EX/xexF/8XsRf/F7EX/xexF/8XsRf/F7EX/xexF/8XsRf/F7EX/xexF/8XsRf/F7EX/xexF/8WsRb/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqwDmAKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKsA5gCpAHwAqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqQB8AIAAAgCpAHwAqwDmAKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqwDmAKkAfACAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKAAAADAAAABgAAAAAQAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqgAPAKkAXACqAMYAqgD2AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD2AKoAxgCpAFwAqgAPAAAAAACqAA8AqQCVAKoA+ACqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAPgAqQCVAKoADwCpAFwAqgD4AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD4AKkAXACqAMYAqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoAxgCqAPYAqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA9gCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8IrAj/Jrcm/yq4Kv8mtib/BqwG/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8vuS//5Pbk///////l9uX/IrUi/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/w2uDf+l4aX//P38//z9/P+D1oP/AqsC/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8vuS//5Pbk///////q+Or/T8RP/zO7M/8zuzP/M7sz/zO7M/8zuzP/M7sz/zO7M/8zuzP/M7sz/zO7M/8zuzP/M7sz/zO7M/8zuzP/M7sz/zO7M/8zuzP/M7sz/z6/Pv+557n///////////+F1oX/AqsC/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8vuS//5Pbk///////8/vz/6fjp/+X25f/l9uX/5fbl/+X25f/l9uX/5fbl/+X25f/l9uX/5fbl/+X25f/l9uX/5fbl/+X25f/l9uX/5fbl/+X25f/l9uX/5fbl/+f35//2/Pb///////////+F1oX/AqsC/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8vuS//5Pbk//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+F1oX/AqsC/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8vuS//5Pbk///////0+/T/o+Cj/5Xblf+V25X/lduV/5Xblf+V25X/lduV/5Xblf+V25X/lduV/5Xblf+V25X/lduV/5Xblf+V25X/lduV/5Xblf+V25X/lduV/5vdm//a89r///////////+F1oX/AqsC/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8vuS//5Pbk///////m9ub/KLco/wesB/8HrAf/B6wH/wesB/8HrAf/B6wH/wesB/8HrAf/B6wH/wesB/8HrAf/B6wH/wesB/8HrAf/B6wH/wesB/8HrAf/B6wH/xSxFP+q4qr///////////+F1oX/AqsC/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8vuS//5Pbk///////l9uX/IrUi/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/w2uDf+n4af///////////+F1oX/AqsC/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8vuS//5Pbk///////l9uX/IrUi/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/w2uDf+n4af///////////+F1oX/AqsC/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8vuS//5Pbk///////o9+j/Pr8+/yC1IP8gtSD/ILUg/yC1IP8gtSD/ILUg/yC1IP8gtSD/ILUg/yC1IP8gtSD/ILUg/yC1IP8gtSD/ILUg/yC1IP8gtSD/ILUg/yy5LP+z5bP///////////+F1oX/AqsC/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8vuS//5Pbk//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+F1oX/AqsC/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8vuS//5Pbk//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+F1oX/AqsC/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8vuS//5Pbk///////r+Ov/VcZV/zu9O/87vTv/O707/zu9O/87vTv/O707/zu9O/87vTv/O707/zu9O/87vTv/O707/zu9O/87vTv/O707/zu9O/87vTv/O707/0XBRf+86bz///////////+F1oX/AqsC/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8vuS//5Pbk///////l9uX/IrUi/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/w2uDf+n4af///////////+F1oX/AqsC/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8vuS//5Pbk///////l9uX/IrUi/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/w2uDf+n4af///////////+F1oX/AqsC/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8vuS//5Pbk///////l9uX/IrUi/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/w2uDf+n4af///////////+F1oX/AqsC/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8vuS//5Pbk///////2/Pb/seWx/6Xhpf+l4aX/peGl/6Xhpf+l4aX/peGl/6Xhpf+l4aX/peGl/6Xhpf+l4aX/peGl/6Xhpf+l4aX/peGl/6Xhpf+l4aX/peGl/6rjqv/g9eD///////////+F1oX/AqsC/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8vuS//5Pbk//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+F1oX/AqsC/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8vuS//5Pbk//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+F1oX/AqsC/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/Ca0J/yq4Kv8quCr/Krgq/yq4Kv8quCr/Krgq/yq4Kv8quCr/Krgq/yq4Kv8quCr/Krgq/yq4Kv8quCr/Krgq/yq4Kv8quCr/Krgq/yq4Kv8quCr/Krgq/yq4Kv8quCr/Krgq/yq4Kv8quCr/Krgq/yq4Kv8quCr/Krgq/yq4Kv8quCr/Krgq/yq4Kv8quCr/Krgq/wutC/8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/Nbs1/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////0LAQv8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/Nbs1/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////0LAQv8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/I7Uj/6Xhpf+l4aX/peGl/6Xhpf+l4aX/peGl/6Xhpf+l4aX/peGl/6Xhpf+l4aX/peGl//H68f///////////7nnuf+l4aX/peGl/6Xhpf+l4aX/ye3J////////////4fXh/6Xhpf+l4aX/peGl/6Xhpf+l4aX/peGl/6Xhpf+l4aX/peGl/6Xhpf+l4aX/peGl/yu4K/8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/yK1Iv88vjz/GrIa/wasBv8AqgD/AKoA/9fy1////////////zi8OP8AqgD/AKoA/wCqAP8AqgD/Zsxm////////////qOKo/wCqAP8BqgH/GLIY/z+/P/9Wxlb/Ca0J/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/5ndmf/2/Pb/y+7L/0PAQ/8AqgD/AKoA/9fy1////////////zi8OP8AqgD/AKoA/wCqAP8AqgD/Zsxm////////////qOKo/wCqAP8DqwP/i9mL//v++//t+e3/S8NL/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/ELAQ//H68f///////f79/yS2JP8AqgD/AKoA/9fy1////////////zi8OP8AqgD/AKoA/wCqAP8AqgD/Zsxm////////////qOKo/wCqAP8AqgD/J7cn//b89v//////2PLY/wutC/8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8BqgH/dNF0////////////r+Sv/wCqAP8AqgD/AKoA/9fy1////////////zi8OP8AqgD/AKoA/wCqAP8AqgD/Zsxm////////////qOKo/wCqAP8AqgD/AKoA/4LVgv/9/v3//////4jXiP8DqwP/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8ashr/0fDR///////x+vH/QsBC/wCqAP8AqgD/AKoA/9fy1////////////zi8OP8AqgD/AKoA/wCqAP8AqgD/Zsxm////////////qOKo/wCqAP8AqgD/AKoA/yK1Iv/W8db//////+T25P82vDb/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP9ky2T/9fz1//////+v5a//EK8Q/wCqAP8AqgD/AKoA/9fy1////////////zi8OP8AqgD/AKoA/wCqAP8AqgD/Zsxm////////////qOKo/wCqAP8AqgD/AKoA/wWrBf+E1oT//P78//3+/f+T25P/Ca0J/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/xaxFv+86bz///////H68f9Wx1b/AKoA/wCqAP8AqgD/AKoA/9fy1////////////zi8OP8AqgD/AKoA/wCqAP8AqgD/Zsxm////////////qOKo/wCqAP8AqgD/AKoA/wCqAP80vDT/5Pbk///////n9+f/K7gr/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/yW2Jf+557n/8frx/7Hlsf8Org7/AKoA/wCqAP8AqgD/AKoA/9fy1////////////zi8OP8AqgD/AKoA/wCqAP8AqgD/Zsxm////////////qOKo/wCqAP8AqgD/AKoA/wCqAP8EqwT/pOGk/9703v+l4aX/Mroy/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wSrBP8VsRX/Krgq/x60Hv8AqgD/AKoA/wCqAP8AqgD/AKoA/9fy1////////////zi8OP8AqgD/AKoA/wCqAP8AqgD/Zsxm////////////qOKo/wCqAP8AqgD/AKoA/wCqAP8AqgD/F7IX/yC1IP8Nrg3/AaoB/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8ftB//jtmO/57fnv+e357/nt+e/57fnv+e357/nt+e/57fnv+e357/nt+e//D68P///////////7TmtP+e357/nt+e/57fnv+e357/xezF////////////3vTe/57fnv+e357/nt+e/57fnv+e357/nt+e/57fnv+e357/nt+e/5zenP9HwUf/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8xujH/5fbl//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////r9+v9xz3H/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8xujH/5fbl//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////r9+v9xz3H/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8IrAj/I7Uj/ye2J/8ntif/J7Yn/ye2J/8ntif/J7Yn/ye2J/8ntif/J7Yn/ye2J/8ntif/J7Yn/ye2J/8ntif/J7Yn/ye2J/8ntif/J7Yn/ye2J/8ntif/J7Yn/ye2J/8ntif/J7Yn/ye2J/8ntif/J7Yn/ye2J/8ntif/J7Yn/ya2Jv8RsBH/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAPYAqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA9gCqAMYAqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoAxgCpAFwAqgD4AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD4AKkAXACqAA8AqQCVAKoA+ACqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAPgAqQCVAKoADwAAAAAAqgAPAKkAXACqAMYAqgD2AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD/AKoA/wCqAP8AqgD2AKoAxgCpAFwAqgAPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+// @homepage     https://greasyfork.org/scripts/530133
+// @supportURL   https://github.com/cresstoo/jjwx-reader
 // @grant        none
+// @license      MIT
 // ==/UserScript==
 
 (function() {
@@ -44,16 +47,12 @@
             padding: 0 !important;
             border: none !important;
             line-height: inherit !important;
-            color: inherit !important; /* 使用继承的颜色，而不是固定颜色 */
+            color: inherit !important;
         }
         
-        /* ==================== 主要布局容器 ==================== */
-        /* 核心：强制使用单列布局，隐藏右侧列 */
-        #oneboolt {
-            display: none !important;
-        }
-
-        /* 隐藏所有原始元素 */
+        /* ==================== 隐藏原始元素 ==================== */
+        /* 隐藏通用元素 */
+        #oneboolt,
         .noveltitle:not(.jj-novel-header),
         .novelbody:not(.jj-novel-content),
         .noveltext:not(.jj-novel-content),
@@ -61,27 +60,33 @@
         .readtd:not(.jj-novel-content),
         table[width="984"],
         table[width="100%"],
-        #comment_list, #publishcomment,
+        #comment_list, 
+        #publishcomment,
         td:has(> #comment_list),
-        .readcontrolbar, .uninterested-hide,
-        .danmu, .danmu_row, #danmu_main, .danmu_total_str,
-        marquee, iframe, #qrCodeDiv,
-        #footer, div#footer, body > div#footer,
-        div[style*="z-index:333333"],
-        div.footer, .copyright, #copyright, 
-        .bottomlinks, #sitebottom, 
+        .readcontrolbar,
+        .uninterested-hide,
+        .danmu, 
+        .danmu_row, 
+        #danmu_main, 
+        .danmu_total_str,
+        marquee, 
+        iframe, 
+        #qrCodeDiv,
+        #footer, 
+        div#footer, 
+        body > div#footer,
+        [style*="z-index:333333"],
+        div.footer, 
+        .copyright, 
+        #copyright, 
+        .bottomlinks, 
+        #sitebottom, 
         div[class*="footer"],
-        table[style*="z-index:333333"],
-        div[align="center"]:has(> table):nth-last-of-type(1),
-        div[align="center"]:has(> table):nth-last-of-type(2) {
+        div[align="center"]:has(> table):nth-last-of-type(-n+2) {
             display: none !important;
-            visibility: hidden !important;
-            max-height: 0 !important;
-            overflow: hidden !important;
-            opacity: 0 !important;
         }
         
-        /* 隐藏插入书签按钮和收藏区域 - 更精确的选择器 */
+        /* 隐藏书签和收藏相关元素 */
         div[align="right"]:has(> div[style*="float:right"]),
         div[style*="float:right"][style*="height: 25px"],
         div:has(> img[src*="bookmark.gif"]),
@@ -95,29 +100,20 @@
         div[id="float_favorite"], 
         div[id="mongolia_layer"],
         div[id="report_box"],
-        div[id="favoriteshow_2"],
         div[id*="favoriteshow_"],
         span[id="chapterJurisdiction"],
         font[color="#009900"]:has(> span.favorite_novel),
         div.float_favorite,
         a[href*="freegold"],
-        script:contains("displayyrt"),
         button[onclick*="FavoriteClass"],
         div[class*="addFavoritClass"] {
             display: none !important;
-            visibility: hidden !important;
-            max-height: 0 !important;
-            overflow: hidden !important;
-            opacity: 0 !important;
             position: absolute !important;
             top: -9999px !important;
             left: -9999px !important;
-            z-index: -1 !important;
-    width: 0 !important;
-            height: 0 !important;
         }
         
-        /* 隐藏原始的返回顶部按钮 */
+        /* 隐藏原始返回顶部按钮 */
         a[href="#top"], 
         a[href="javascript:scroll(0,0)"],
         a[onclick*="scroll(0,0)"],
@@ -125,14 +121,10 @@
         a[id="booktext_top"],
         [onclick*="window.scrollTo"],
         a[href^="javascript"][onclick*="window.scroll"],
-        div[style*="position: fixed"][style*="right:"][style*="bottom:"][style*="cursor: pointer"][style*="opacity"][title*="返回顶部"],
         div[style*="position: fixed"][style*="right:"][style*="bottom:"][style*="cursor: pointer"]:not(.back-to-top),
-        div[style*="position:fixed"][style*="right:"][style*="bottom:"][style*="cursor:pointer"]:not(.back-to-top),
         div[style*="width: 18px"][style*="line-height: 1.2"][style*="position: fixed"][style*="right: 10px"],
         div[style*="background-color: rgb(0, 0, 0)"][style*="position: fixed"][title="返回顶部"] {
-    display: none !important;
-    visibility: hidden !important;
-            opacity: 0 !important;
+            display: none !important;
             pointer-events: none !important;
         }
         
