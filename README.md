@@ -2,9 +2,6 @@
 
 一个极简化的晋江文学城阅读界面的油猴脚本。
 
-=======
-地址：[https://greasyfork.org/scripts/530133](https://greasyfork.org/scripts/530133) 
-
 ## 功能特性v1.0.2
 ![2025-03-18 08.49.53.png](https://s2.loli.net/2025/03/18/kmf5JiALeZszFU9.png)
 - 去除原生界面多余元素，仅保留导航和阅读器
